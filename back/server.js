@@ -46,7 +46,7 @@ app.get("/callback", async (req, res) => {
     const { email } = profileResponse.data;
 
     res.redirect(
-      `http://localhost:3000?access_token=${access_token}&refresh_token=${refresh_token}&email=${email}`
+      `http://localhost:3000/Home?access_token=${access_token}&refresh_token=${refresh_token}&email=${email}`
     );
   } catch (error) {
     console.error("Error:", error.response.data);

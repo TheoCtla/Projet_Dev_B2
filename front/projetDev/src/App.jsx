@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import queryString from "query-string";
-import AccessTokenContext from "./components/AccessTokenContext";
-import { Login } from "./components/login.jsx";
-import { Logout } from "./components/logout.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Profile } from "./components/homePage";
+import { Login } from "./components/login";
 
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
-  const [email, setEmail] = useState(""); // Ajout de l'état pour l'adresse e-mail
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const { access_token, email } = queryString.parse(window.location.search);
@@ -25,9 +23,12 @@ const App = () => {
   }, []);
 
   return (
-    <BrowerRouter>
-      <Routes></Routes>
-    </BrowerRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Home" element={<Profile accessToken={accessToken} />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

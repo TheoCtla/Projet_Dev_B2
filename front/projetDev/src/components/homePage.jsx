@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import AccessTokenContext from "./AccessTokenContext";
 
-export function Profile() {
-  const { accessToken } = useContext(AccessTokenContext);
+export function Profile({ accessToken }) {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
