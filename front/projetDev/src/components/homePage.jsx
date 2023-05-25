@@ -1,0 +1,40 @@
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import AccessTokenContext from "./AccessTokenContext";
+
+export function Profile() {
+  const { accessToken } = useContext(AccessTokenContext);
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get("https://api.spotify.com/v1/me", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        setProfile(response.data);
+      } catch (error) {
+        console.error("Error:", error.response.data);
+      }
+    };
+
+    if (accessToken) {
+      fetchProfile();
+    }
+  }, [accessToken]);
+
+  if (!profile) {
+    return <p>Loading profile...</p>;
+  }
+
+  return (
+    <div>
+      <h2>Profile</h2>
+      <p>Name: {profile.display_name}</p>
+      <p>Email: {profile.email}</p>
+      <p>Country: {profile.country}</p>
+    </div>
+  );
+}

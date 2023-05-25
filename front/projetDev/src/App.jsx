@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import queryString from "query-string";
 import AccessTokenContext from "./components/AccessTokenContext";
 import { Login } from "./components/login.jsx";
 import { Logout } from "./components/logout.jsx";
+
+import { Profile } from "./components/homePage";
 
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
@@ -22,9 +25,9 @@ const App = () => {
   }, []);
 
   return (
-    <AccessTokenContext.Provider value={{ accessToken, email }}>
-      <div>{accessToken ? <Logout /> : <Login />}</div>
-    </AccessTokenContext.Provider>
+    <BrowerRouter>
+      <Routes></Routes>
+    </BrowerRouter>
   );
 };
 
