@@ -1,0 +1,26 @@
+.genres {
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  width: 85%;
+}
+
+.genre {
+  margin: 10px;
+  padding: 5px;
+  background-color: transparent;
+  border-color: black;
+  border-radius: 20px;
+  box-shadow: 5px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+}
+
+.genre:hover {
+  color: black;
+  background-color: white;
+}

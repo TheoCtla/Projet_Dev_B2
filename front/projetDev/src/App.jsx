@@ -3,8 +3,9 @@ import axios from "axios";
 import queryString from "query-string";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Profile } from "./components/homePage";
 import { Login } from "./components/login";
+import { Logout } from "./components/logout";
+import { Home } from "./components/homePage";
 
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
@@ -26,7 +27,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/Home" element={<Profile accessToken={accessToken} />} />
+        <Route path="/Home" element={<Home accessToken={accessToken} />} />
+        <Route path="/Home/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>
   );

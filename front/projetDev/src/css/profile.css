@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+}
+
+.profile-button {
+  padding: 10px 20px;
+  background-color: #3f3f3f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+
+  outline: none;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0%;
+  width: 250px;
+  padding: 20px;
+  background-color: #646464;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* transition: right 0.3s ease-in-out; */
+}
+
+.menu.open {
+  right: 0;
+}
+
+.menu h2 {
+  margin-top: 0;
+}
+
+.menu p {
+  margin-bottom: 10px;
+}

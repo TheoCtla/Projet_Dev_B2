@@ -1,38 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import { Profile } from "./profile";
+import { DisplayGenre } from "./displayGenre";
+import { text } from "express";
 
-export function Profile({ accessToken }) {
-  const [profile, setProfile] = useState(null);
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await axios.get("https://api.spotify.com/v1/me", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        setProfile(response.data);
-      } catch (error) {
-        console.error("Error:", error.response.data);
-      }
-    };
-
-    if (accessToken) {
-      fetchProfile();
-    }
-  }, [accessToken]);
-
-  if (!profile) {
-    return <p>Loading profile...</p>;
-  }
-
+export function Home({ accessToken }) {
   return (
-    <div>
-      <h2>Profile</h2>
-      <p>Name: {profile.display_name}</p>
-      <p>Email: {profile.email}</p>
-      <p>Country: {profile.country}</p>
-    </div>
+    <>
+      <div>Home Page</div>
+      <Profile accessToken={accessToken} />
+      <DisplayGenre accessToken={accessToken} />
+    </>
   );
 }
